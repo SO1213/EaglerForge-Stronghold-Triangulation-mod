@@ -136,5 +136,16 @@ function showMessage(msg) {
  const r = document.getElementById('triangulator-result');
  r.innerText = msg;
 }
-// Triangulation
+// Triangulation in XZ-plane
+ Minecraft yaw degrees:
+ //yaw=0 -> +Z (south), yaw=90 -> -x (west).
+ Vector: dx = -sin(rad), dz = cos(rad)
+ function triangulateXZ(x1,z1,yaw1deg,x2,z2,yaw2deg, asRays = true) {
+  const rad1 = yaw1deg * Math.PI / 180.00;
+  const dx1 = -Math.sin(rad1);
+  const dz1 = Math.cos(rad1);
+  const rad2 = yaw2deg * Math.PI / 180.00;
+  const dx2 = -Math.sin(rad1);
+  const dz2 = Math.cos(rad2);
+ }
  
