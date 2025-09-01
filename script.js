@@ -125,3 +125,16 @@ document.getElementById('tri-chat').addEventListener('click', () => {
 });
 
 panel.style.display = state.show ? 'block' : 'none';
+}
+function updatePositionsUI() {
+ const el = document.getElementById('triangulator-positions');
+ const a = state.A ? A = [${state.A.x.toFixed(3)}, ${state.A.y.toFixed(3)}, ${state.A.z.toFixed(3)}] : 'A = (not set)';
+ const b = state.B ? A = [${state.B.x.toFixed(3)}, ${state.B.y.toFixed(3)}, ${state.B.z.toFixed(3)}] : 'B = (not set)';
+ el.innerText = ${a}\n${b};
+}
+function showMessage(msg) {
+ const r = document.getElementById('triangulator-result');
+ r.innerText = msg;
+}
+// Triangulation
+ 
