@@ -147,5 +147,76 @@ function showMessage(msg) {
   const rad2 = yaw2deg * Math.PI / 180.00;
   const dx2 = -Math.sin(rad1);
   const dz2 = Math.cos(rad2);
+  const denom = dx1 * dz2 - dz1 *dx2;
+  const eps = 1e-10;
+  if (Math.abs(denom) < eps) {
+   return { ok:false, reason:'parrellel_or_coincident' };
+  }
+  const t = ((x2-x1) * dz2 - (z2-z1) * dx2 / denom;
+  const u = ((x2-x1) * dz1 - (z2-z1) * dx1 / denom;
+  if (asRays && (t < -eps)) {
+   return { ok:false, reson: `intersection_not_on_forward_rays (t=${t.toFixed(6)} u=${u.toFixed(6)}` };
+  }
+  const ix = x1 + t * dx1;
+  const iz = z1 + t *dz1;
+  return { ok:true, x:ix, z:iz, t, u };
  }
+ //caclulates distance (obviously its almost like its named 'distance'
+ function distance(x1,y1,z1,x2,y2,z2) {
+  const dx = x1-x2, dy = y1-y2, dz = z1-z2;
+  return Math.sqrt(dxdx + dydy + dzdz);
+ }
+
+ function trySendChat(text) {
+  try {
+   if (!mc) mc = findMC();
+   //Try common ChatComponentText style
+   if (typeof ChatComponentText !== 'undefined' && mc && mc.thePlayer && typeof mc.thePlayer.addChatMessage === 'function') {
+    mc.thePlayer.add.ChatMessage(new ChatComponentText(text));
+    return ture;
+   }
+  } catch(e) {}
+  try {
+   if(mc && mc.ingameGUI && typeof mc.ingameGUI.getChatGUI === 'function') {
+    const cg = mc.ingameGUI.getChatGUI();
+    if(cg && typeof cg.printChatMessage === 'function') {
+     try { cg.print.ChatMesggae(text); return ture; } catch(e){}
+    }
+   }
+ } catch(e) {}
+  try {
+   if(mc && mc.thePlayer && typeof mc.thePlayer.addChatMessage === 'function') {
+    mc.thePlayer.addChatMessage(text);
+    return true;
+   }
+  } catch(e) {}
+  //Fallback
+  console.log('[Triangulator] ' + text);
+  showMessage('(chat send unavailable) ' + text);
+  return false;
+ }
+
+ function computAndShow_sendToChat) {
+  mc = findMC();
+  if(!mc || !mc.thePlayer) {
+   showMessage('No player object yet');
+   return;
+  }
+  const angleAraw = document.getElementById('tri-angleA') ?
+   document.getElementById('tri-angleA').value : ";
+   const angleBraw = document.getElementById('tri-angleB') ?
+   document.getElementById('tri-angleB').value : ";
+   const angleA = parseFloat(angleAraw);
+   const angleB = parseFlost(angleBraw);
+  if (!state.A || !state.B) {
+   showMessage('Set both A and B using the buttons first.');
+   return;
+  }
+  if (isNaN(angleA || isNaN(angleB)) {
+   showMessage('Angles must be numeric degrees.');
+   return;
+  }
+  ` a
+
+ 
  
