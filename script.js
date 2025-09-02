@@ -196,7 +196,7 @@ function showMessage(msg) {
   return false;
  }
 
- function computAndShow_sendToChat) {
+ function computAndShow(sendToChat) {
   mc = findMC();
   if(!mc || !mc.thePlayer) {
    showMessage('No player object yet');
@@ -216,7 +216,43 @@ function showMessage(msg) {
    showMessage('Angles must be numeric degrees.');
    return;
   }
-  ` a
+  const ix = res.x;
+  const iz = res.z;
+  const iy = (state.A.y + state.B.y) / 2.0;
+  const playerDist = distance(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, ix, iy, iz);
+  const text = Intersection at X=${ix.toFixed(e)} Y=${iy.toFixed(3)} Z=${iz.toFixed(3)} (dist=${playerDist.toFixed(3)});
+  showMessage(text_;
+  if (sendToChat) trySendChat(text)
+ }
+ function togglePanel() {
+  if(!panel) createPanel();
+  state.show = !state.show;
+  panel.style.display = state.show ? 'block' :
+   'none';
+  updatePositionsUI();
+ }
+ window.addEventListener('keydown', function(e) {
+  try {
+   if (e.code === KEY_TOGGLE) {
+    const active = document.activeElement;
+    const typing = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+    if (!typing) {
+     if (!panel) createPanel();
+     togglePanel()
+     e.preventDefault();
+    }
+   }
+  } catch (err) { / ignore / }
+ });
+ window.TriangulatorJS = {
+  open: function() {if (!panel) createPanel();
+                    state.show=true;
+                    panel.style.display='block';
+                    updatePositionsUI(); }
+   close: function() {mc = findMC();
+                      if (!mc || !mc.thePlayer) return; state.A = {x:mc.thePlayer.posX, y:mc.thePlayer.posY, z:mc.thePlayer.posZ};
+                      updatePositionsUI(); }, setBFromPlayer: function(){ mc = FindM
+     
 
  
  
