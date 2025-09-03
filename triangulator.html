@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Triangulator</title>
+  <link rel="stylesheet" href="triangulator.css">
+</head>
+<body>
+  <h1>Triangulator</h1>
+
+  <label for="triType">Triangulation Type:</label>
+  <select id="triType">
+    <option value="AA">Angle-Angle (AA)</option>
+    <option value="ASA">Angle-Side-Angle (ASA)</option>
+    <option value="SAS">Side-Angle-Side (SAS)</option>
+    <option value="SSS">Side-Side-Side (SSS)</option>
+  </select>
+
+  <div class="inputs">
+    <div class="observer">
+      <input type="number" class="x1" placeholder="Observer 1 x">
+      <input type="number" class="y1" placeholder="Observer 1 y">
+      <input type="number" class="ang1" placeholder="Angle 1 (deg)">
+    </div>
+
+    <div class="observer">
+      <input type="number" class="x2" placeholder="Observer 2 x">
+      <input type="number" class="y2" placeholder="Observer 2 y">
+      <input type="number" class="ang2" placeholder="Angle 2 (deg)">
+    </div>
+
+    <!-- For ASA, SAS, SSS we may add extra inputs dynamically -->
+    <div id="extraInputs"></div>
+  </div>
+
+  <button id="calcBtn">Calculate</button>
+  <div id="result"></div>
+
+  <canvas id="triCanvas" width="600" height="600"></canvas>
+
+  <script src="triangulator.js"></script>
+</body>
+</html>
