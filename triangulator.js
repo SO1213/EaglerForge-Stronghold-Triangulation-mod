@@ -7,10 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const padding = 40;
 
   const xMin = -300, xMax = 300, yMin = -300, yMax = 300;
+  function scale() {
+    xMin = document.getElementById("xMin");
+    xMax = document.getElementById("xMax");
+    yMin = document.getElementById("yMin");
+    yMax = document.getElementById("yMax");
+  }
 
   function clearCanvas() { ctx.clearRect(0, 0, canvasWidth, canvasHeight); }
 
   function toCanvasCoords(x, y) {
+    scale();
     const scaleX = (canvasWidth - 2*padding)/(xMax - xMin);
     const scaleY = (canvasHeight - 2*padding)/(yMax - yMin);
     const cx = padding + (x - xMin) * scaleX;
